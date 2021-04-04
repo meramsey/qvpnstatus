@@ -2,5 +2,7 @@
     "app_name": "qvpnstatus",
     "author": "Michael Ramsey",
     "main_module": "src/main/python/qvpnstatus/systemtraystatus.py",
-    "version": "0.1.1"
+    "version": "0.1.1",
+    "gpg_key": "9EF5FD1B7714354D0535303CFF1B29F26A1378E8",
+    "gpg_name": "Michael Ramsey"
 }
