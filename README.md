@@ -15,17 +15,17 @@ It is based on my [copier-poetry-fbs](https://gitlab.com/mikeramsey/copier-poetr
 
 ## Installation
 
-Debian/Ubuntu/Mint Linux Installation
+###Debian/Ubuntu/Mint Linux Installation
 
 Manual Installer link without automatic updates.
 https://fbs.sh/qvpnstatus/qvpnstatus/qvpnstatus.deb
 
-Install from website.
+###Install from website.
 ```bash
 wget https://fbs.sh/qvpnstatus/qvpnstatus/qvpnstatus.deb
 sudo dpkg -i qvpnstatus.deb
 ```
-To install with automatic updates supported via repo.
+####To install with automatic updates supported via repo.
 ```bash
 sudo apt-get install -y apt-transport-https
 wget -qO - https://fbs.sh/qvpnstatus/qvpnstatus/public-key.gpg | sudo apt-key add -
@@ -33,8 +33,28 @@ echo 'deb [arch=amd64] https://fbs.sh/qvpnstatus/qvpnstatus/deb stable main' | s
 sudo apt-get update; sudo apt-get install -y qvpnstatus
 ```
 Installation is done into /opt/qvpnstatus/   
-    
-Installation via `pip`:
+
+--------------------------------------------------------------------------
+
+###Arch Linux Installation
+
+####Manual Installer link without automatic updates.
+https://fbs.sh/qvpnstatus/qvpnstatus/qvpnstatus.pkg.tar.xz
+
+####To install with automatic updates supported via repo.
+```bash
+curl -O https://fbs.sh/qvpnstatus/qvpnstatus/public-key.gpg && sudo pacman-key --add public-key.gpg && sudo pacman-key --lsign-key 9EF5FD1B7714354D0535303CFF1B29F26A1378E8 && rm public-key.gpg
+echo -e '\n[qvpnstatus]\nServer = https://fbs.sh/qvpnstatus/qvpnstatus/arch' | sudo tee -a /etc/pacman.conf
+sudo pacman -Syu qvpnstatus
+```
+If you already have the app installed, you can force an immediate update via:
+```bash
+sudo pacman -Syu --needed qvpnstatus
+```
+
+--------------------------------------------------------------------------
+
+## Installation via `pip`:
 ```bash
 python3.7 -m pip install qvpnstatus
 ```
