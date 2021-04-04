@@ -48,7 +48,7 @@ With [`pipx`](https://github.com/pipxproject/pipx):
 ```bash
 python3.7 -m pip install --user pipx
 
-pipx install --python python3.6 qvpnstatus
+pipx install --python python3.7 qvpnstatus
 ```
 
 ## Creating a native installer
