@@ -39,6 +39,26 @@ pyenv global system 3.7.12
 
 ## Installation
 
+Debian/Ubuntu/Mint Linux Installation
+
+Manual Installer link without automatic updates.
+https://fbs.sh/qvpnstatus/qvpnstatus/qvpnstatus.deb
+
+Install from website.
+```bash
+wget https://fbs.sh/qvpnstatus/qvpnstatus/qvpnstatus.deb
+sudo dpkg -i qvpnstatus.deb
+```
+To install with automatic updates supported via repo.
+```bash
+sudo apt-get install -y apt-transport-https
+wget -qO - https://fbs.sh/qvpnstatus/qvpnstatus/public-key.gpg | sudo apt-key add -
+echo 'deb [arch=amd64] https://fbs.sh/qvpnstatus/qvpnstatus/deb stable main' | sudo tee /etc/apt/sources.list.d/qvpnstatus.list
+sudo apt-get update; sudo apt-get install -y qvpnstatus
+```
+Installation is done into /opt/qvpnstatus/   
+   
+   
 With `pip`:
 ```bash
 python3.7 -m pip install qvpnstatus

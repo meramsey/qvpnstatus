@@ -15,3 +15,5 @@ venv/
 # PyBuilder
 target/
 /target/
+src/sign/*
+src/build/settings/secret.json
