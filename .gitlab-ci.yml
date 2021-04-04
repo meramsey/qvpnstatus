@@ -8,10 +8,10 @@ cache:
   - .cache/pip
   - .venv
 
-stages:
-- quality
-- tests
-- deploy
+#stages:
+#- quality
+#- tests
+#- deploy
 
 .install-deps-template: &install-deps
   before_script:
