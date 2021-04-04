@@ -13,7 +13,40 @@ See link [here](https://wizardassistant.com/qvpn-status-monitor-status-and-resta
 It is based on my [copier-poetry-fbs](https://gitlab.com/mikeramsey/copier-poetry-fbs) skeleton which uses PyQT5 for the GUI elements and [fbs](https://github.com/mherrmann/fbs) for the installer creation.
 
 
-## Requirements
+## Installation
+
+Debian/Ubuntu/Mint Linux Installation
+
+Manual Installer link without automatic updates.
+https://fbs.sh/qvpnstatus/qvpnstatus/qvpnstatus.deb
+
+Install from website.
+```bash
+wget https://fbs.sh/qvpnstatus/qvpnstatus/qvpnstatus.deb
+sudo dpkg -i qvpnstatus.deb
+```
+To install with automatic updates supported via repo.
+```bash
+sudo apt-get install -y apt-transport-https
+wget -qO - https://fbs.sh/qvpnstatus/qvpnstatus/public-key.gpg | sudo apt-key add -
+echo 'deb [arch=amd64] https://fbs.sh/qvpnstatus/qvpnstatus/deb stable main' | sudo tee /etc/apt/sources.list.d/qvpnstatus.list
+sudo apt-get update; sudo apt-get install -y qvpnstatus
+```
+Installation is done into /opt/qvpnstatus/   
+    
+Installation via `pip`:
+```bash
+python3.7 -m pip install qvpnstatus
+```
+
+Installation via [`pipx`](https://github.com/pipxproject/pipx):
+```bash
+python3.7 -m pip install --user pipx
+
+pipx install --python python3.7 qvpnstatus
+```
+
+## Dev Requirements
 
 QVpnStatus requires Python 3.7 or above.
 
@@ -37,39 +70,6 @@ pyenv global system 3.7.12
 ```
 </details>
 
-## Installation
-
-Debian/Ubuntu/Mint Linux Installation
-
-Manual Installer link without automatic updates.
-https://fbs.sh/qvpnstatus/qvpnstatus/qvpnstatus.deb
-
-Install from website.
-```bash
-wget https://fbs.sh/qvpnstatus/qvpnstatus/qvpnstatus.deb
-sudo dpkg -i qvpnstatus.deb
-```
-To install with automatic updates supported via repo.
-```bash
-sudo apt-get install -y apt-transport-https
-wget -qO - https://fbs.sh/qvpnstatus/qvpnstatus/public-key.gpg | sudo apt-key add -
-echo 'deb [arch=amd64] https://fbs.sh/qvpnstatus/qvpnstatus/deb stable main' | sudo tee /etc/apt/sources.list.d/qvpnstatus.list
-sudo apt-get update; sudo apt-get install -y qvpnstatus
-```
-Installation is done into /opt/qvpnstatus/   
-   
-   
-With `pip`:
-```bash
-python3.7 -m pip install qvpnstatus
-```
-
-With [`pipx`](https://github.com/pipxproject/pipx):
-```bash
-python3.7 -m pip install --user pipx
-
-pipx install --python python3.7 qvpnstatus
-```
 
 ## Creating a native installer
 -  clone the repo locally   
