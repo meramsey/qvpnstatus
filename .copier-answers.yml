@@ -1,0 +1,19 @@
+# Changes here will be overwritten by Copier
+_commit: 0.1.13
+_src_path: https://gitlab.com/mikeramsey/copier-poetry-fbs.git
+author_email: mike@hackerdise.me
+author_fullname: Michael Ramsey
+author_username: mikeramsey
+copyright_date: '2021'
+copyright_holder: Michael Ramsey
+copyright_holder_email: mike@hackerdise.me
+copyright_license: MIT License
+project_description: VPN Status tray icon for monitoring VPN connection
+project_name: QVpnStatus
+python_package_command_line_name: qvpnstatus
+python_package_distribution_name: qvpnstatus
+python_package_import_name: qvpnstatus
+repository_name: qvpnstatus
+repository_namespace: mikeramsey
+repository_provider: gitlab.com
+use_precommit: true

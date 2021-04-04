@@ -1,0 +1,6 @@
+{
+    "app_name": "qvpnstatus",
+    "author": "Michael Ramsey",
+    "main_module": "src/main/python/qvpnstatus/systemtraystatus.py",
+    "version": "0.1.0"
+}
