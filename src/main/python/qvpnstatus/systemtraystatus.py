@@ -32,12 +32,9 @@ class SystemTrayIcon(QtWidgets.QSystemTrayIcon):
     def __init__(self, icon, monitoring_mode=False):
         self.appctx = appctxt
         QtWidgets.QSystemTrayIcon.__init__(self)
-        self.version = self.appctx.build_settings['version']
         QApplication.setApplicationName("QVpnStatus")
         QApplication.setOrganizationName("qvpnstatus")
-        QApplication.setOrganizationDomain("example.com")
-        QApplication.setApplicationVersion(self.version)
-        QCoreApplication.setApplicationVersion(self.version)
+        QApplication.setOrganizationDomain("wizardassistant.com")
         self.settings = app_settings
         self.setIcon(QIcon(icon))
         self.menu = QtWidgets.QMenu()
@@ -92,6 +89,7 @@ class SystemTrayIcon(QtWidgets.QSystemTrayIcon):
         self.show_message('QVPN Status', f'Sound Notifications set to {self.sounds}.', qIcon('active_shield.png'))
         if self.sounds:
             self.sound_notify(qSound("538149__fupicat__notification.wav"))
+        self.settings.setValue('sound_notifications', self.sounds)
 
     def create_intervals_menuactions(self):
         for interval in intervals:
@@ -107,6 +105,7 @@ class SystemTrayIcon(QtWidgets.QSystemTrayIcon):
         self.timer.start(self.default_interval)
         self.timer_nmcli.start(self.default_interval)
         print(f'Check Interval Changed to {interval}')
+        self.settings.setValue('default_interval', int(self.default_interval))
 
     def set_icon(self, icon):
         self.setIcon(icon)
@@ -122,12 +121,13 @@ class SystemTrayIcon(QtWidgets.QSystemTrayIcon):
         if self.menu_monitoring_action.isChecked():
             self.sound_notify(qSound("538149__fupicat__notification.wav"))
             self.show_message('QVPN Status', 'Monitoring Mode ENGAGED.', qIcon('active_shield.png'))
-            self.monitor = False
+            self.monitor = True
             self.check_vpns_status_nmcli()
         else:
             self.sound_notify(qSound("538149__fupicat__notification.wav"))
             self.show_message('QVPN Status', 'Monitoring Mode DISABLED!', QIcon(qIcon('inactive_shield.png')))
-            self.monitor = True
+            self.monitor = False
+        self.settings.setValue('monitor_mode', self.menu_monitoring_action.isChecked())
 
     def get_vpn_connections_linux(self):
         for conn in nmcli.connection():
@@ -190,14 +190,14 @@ class SystemTrayIcon(QtWidgets.QSystemTrayIcon):
         # Restore  VPN checked state settings
         for action in self.vpnmenu.actions():
             action.setChecked(self.value_to_bool(app_settings.value(action.text())))
-        self.menu_monitoring_action.setChecked(self.value_to_bool(app_settings.value('monitoring_mode')))
+        self.menu_monitoring_action.setChecked(self.value_to_bool(app_settings.value('monitor_mode')))
         self.sounds_enabled_action.setChecked(self.value_to_bool(app_settings.value('sound_notifications')))
 
     def save_settings(self):
         # Save settings
         for action in self.vpnmenu.actions():
             self.settings.setValue(str(action.text()), action.isChecked())
-        self.settings.setValue('monitoring_mode', self.menu_monitoring_action.isChecked())
+        self.settings.setValue('monitor_mode', self.menu_monitoring_action.isChecked())
         self.settings.setValue('default_interval', int(self.default_interval))
         self.settings.setValue('sound_notifications', self.sounds)
         self.settings.sync()
